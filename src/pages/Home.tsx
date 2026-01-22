@@ -279,13 +279,13 @@ export default function Home() {
   const analyzeStock = async (ticker: string) => {
     setAnalyzing(true)
     setError(null)
-    setAnalysisStatus('Initiating analysis...')
+    setAnalysisStatus('Initiating hidden gem discovery...')
 
     try {
       // Call Stock Opportunity Coordinator
-      setAnalysisStatus(`Analyzing ${ticker} - Coordinating AI agents...`)
+      setAnalysisStatus(`Analyzing ${ticker} - Searching for hidden gem potential...`)
       const coordinatorResult = await callAIAgent(
-        `Analyze ${ticker} stock ticker for short-term investment opportunity. Search the web for current data.`,
+        `Analyze ${ticker} stock ticker to determine if it's a hidden gem - an undervalued small-to-medium cap stock with high growth potential that's overlooked by the market. Search the web for current data and identify what the market is missing.`,
         STOCK_COORDINATOR_ID
       )
 
@@ -298,26 +298,26 @@ export default function Home() {
       // Only fetch detailed analysis if conviction score meets threshold
       if (coordData.conviction_score >= settings.convictionThreshold) {
         // Fetch all detailed analyses in parallel
-        setAnalysisStatus(`${ticker} passed threshold - Gathering comprehensive data from web...`)
+        setAnalysisStatus(`${ticker} shows potential - Deep diving for hidden gem signals...`)
         const [techResult, fundResult, sentResult, indResult, riskResult] = await Promise.all([
           callAIAgent(
-            `Analyze technical indicators for ${ticker} stock - search the web for current price patterns, RSI, MACD, volume trends, and support/resistance levels`,
+            `${ticker}: Search web for early breakout patterns, accumulation phases, and unusual volume. Is this stock in discovery stage before mainstream notices?`,
             TECHNICAL_ANALYSIS_ID
           ),
           callAIAgent(
-            `Evaluate fundamental metrics for ${ticker} - search the web for latest P/E ratio, revenue growth, debt levels, earnings data`,
+            `${ticker}: Search web for undervaluation signs - low P/E but high growth, improving margins, strong revenue growth. What fundamentals is Wall Street missing?`,
             FUNDAMENTAL_ANALYSIS_ID
           ),
           callAIAgent(
-            `Search the web for recent news and sentiment about ${ticker} stock - find latest news articles, press releases, social sentiment, and market buzz`,
+            `${ticker}: Search web for emerging catalysts not yet priced in - new contracts, product launches, partnerships, under-the-radar announcements. What positive news is being overlooked?`,
             NEWS_SENTIMENT_ID
           ),
           callAIAgent(
-            `Research ${ticker}'s industry trends - search the web for current sector performance, competitive dynamics, regulatory changes, and market conditions`,
+            `${ticker}: Search web for emerging industry trends and tailwinds that could lift this small-cap. What macro trends position this stock for growth?`,
             INDUSTRY_TRENDS_ID
           ),
           callAIAgent(
-            `Identify risks for ${ticker} short-term investment - search for current volatility data, liquidity concerns, and negative catalysts`,
+            `${ticker}: Assess small-cap risks - is this a hidden gem or a value trap? Check liquidity, insider selling, red flags.`,
             RISK_ASSESSMENT_ID
           )
         ])
@@ -458,7 +458,10 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Activity className="w-8 h-8 text-emerald-400" />
-                <h1 className="text-2xl font-bold text-white">Stock Research Platform</h1>
+                <div>
+                  <h1 className="text-2xl font-bold text-white">Hidden Gem Stock Finder</h1>
+                  <p className="text-sm text-gray-400">AI-Powered Discovery of Undervalued Small-Cap Opportunities</p>
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <Button
@@ -498,7 +501,7 @@ export default function Home() {
               <div className="flex items-center gap-4">
                 <div className="flex-1">
                   <Label htmlFor="stock-search" className="text-white text-lg font-semibold mb-2 block">
-                    Analyze Any Stock - Real-Time Web Research
+                    Find Hidden Gems - AI Web Research for Undervalued Stocks
                   </Label>
                   <div className="flex gap-3">
                     <div className="relative flex-1 max-w-md">
@@ -506,7 +509,7 @@ export default function Home() {
                       <Input
                         id="stock-search"
                         type="text"
-                        placeholder="Enter stock ticker (e.g., TSLA, AAPL, NVDA)..."
+                        placeholder="Enter small-cap ticker to discover (e.g., CRWD, PLTR, SNOW)..."
                         value={searchTicker}
                         onChange={(e) => setSearchTicker(e.target.value.toUpperCase())}
                         onKeyPress={handleSearchKeyPress}
@@ -528,13 +531,13 @@ export default function Home() {
                       ) : (
                         <>
                           <Search className="w-5 h-5 mr-2" />
-                          Analyze Stock
+                          Find Hidden Gem
                         </>
                       )}
                     </Button>
                   </div>
                   <p className="text-gray-400 text-sm mt-2">
-                    Our AI agents will search the web for current news, financial data, technical indicators, and industry trends
+                    AI agents search the web for undervalued opportunities with strong fundamentals, emerging catalysts, and breakout potential before they go mainstream
                   </p>
                   {analysisStatus && (
                     <div className="mt-3 flex items-center gap-2 text-emerald-400">
@@ -610,10 +613,10 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-emerald-400" />
-                    Investment Alerts
+                    Hidden Gems Discovered
                   </CardTitle>
                   <CardDescription className="text-gray-400">
-                    High-conviction opportunities from your watchlist
+                    Undervalued small-cap opportunities with breakout potential
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -621,9 +624,9 @@ export default function Home() {
                     {alerts.length === 0 ? (
                       <div className="text-center py-12">
                         <Activity className="w-12 h-12 text-gray-600 mx-auto mb-3" />
-                        <p className="text-gray-500">No alerts yet</p>
+                        <p className="text-gray-500">No hidden gems discovered yet</p>
                         <p className="text-gray-600 text-sm mt-1">
-                          Click "Analyze Now" to scan your watchlist
+                          Enter a stock ticker above to start discovering undervalued opportunities
                         </p>
                       </div>
                     ) : (
