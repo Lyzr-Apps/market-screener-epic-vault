@@ -252,7 +252,9 @@ export default function Home() {
     watchlist: ['NVDA', 'AAPL', 'MSFT']
   })
   const [newTicker, setNewTicker] = useState('')
+  const [searchTicker, setSearchTicker] = useState('')
   const [analyzing, setAnalyzing] = useState(false)
+  const [analysisStatus, setAnalysisStatus] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
   const [selectedTab, setSelectedTab] = useState('technical')
 
@@ -277,11 +279,13 @@ export default function Home() {
   const analyzeStock = async (ticker: string) => {
     setAnalyzing(true)
     setError(null)
+    setAnalysisStatus('Initiating analysis...')
 
     try {
       // Call Stock Opportunity Coordinator
+      setAnalysisStatus(`Analyzing ${ticker} - Coordinating AI agents...`)
       const coordinatorResult = await callAIAgent(
-        `Analyze ${ticker} stock ticker for short-term investment opportunity`,
+        `Analyze ${ticker} stock ticker for short-term investment opportunity. Search the web for current data.`,
         STOCK_COORDINATOR_ID
       )
 
@@ -294,25 +298,26 @@ export default function Home() {
       // Only fetch detailed analysis if conviction score meets threshold
       if (coordData.conviction_score >= settings.convictionThreshold) {
         // Fetch all detailed analyses in parallel
+        setAnalysisStatus(`${ticker} passed threshold - Gathering comprehensive data from web...`)
         const [techResult, fundResult, sentResult, indResult, riskResult] = await Promise.all([
           callAIAgent(
-            `Analyze technical indicators for ${ticker} stock - price patterns, RSI, MACD, volume trends, and support/resistance levels`,
+            `Analyze technical indicators for ${ticker} stock - search the web for current price patterns, RSI, MACD, volume trends, and support/resistance levels`,
             TECHNICAL_ANALYSIS_ID
           ),
           callAIAgent(
-            `Evaluate fundamental metrics for ${ticker} - P/E ratio, revenue growth, debt levels, earnings data`,
+            `Evaluate fundamental metrics for ${ticker} - search the web for latest P/E ratio, revenue growth, debt levels, earnings data`,
             FUNDAMENTAL_ANALYSIS_ID
           ),
           callAIAgent(
-            `Search for recent news and sentiment about ${ticker} stock - news articles, press releases, social sentiment`,
+            `Search the web for recent news and sentiment about ${ticker} stock - find latest news articles, press releases, social sentiment, and market buzz`,
             NEWS_SENTIMENT_ID
           ),
           callAIAgent(
-            `Research semiconductor industry trends affecting ${ticker} - sector performance, competitive dynamics, regulatory changes`,
+            `Research ${ticker}'s industry trends - search the web for current sector performance, competitive dynamics, regulatory changes, and market conditions`,
             INDUSTRY_TRENDS_ID
           ),
           callAIAgent(
-            `Identify risks for ${ticker} short-term investment - volatility, liquidity concerns, negative catalysts`,
+            `Identify risks for ${ticker} short-term investment - search for current volatility data, liquidity concerns, and negative catalysts`,
             RISK_ASSESSMENT_ID
           )
         ])
@@ -333,20 +338,38 @@ export default function Home() {
           riskData: riskResult.success ? riskResult.response.result as RiskResult : undefined,
         }
 
+        setAnalysisStatus('Analysis complete!')
         setAlerts(prev => [newAlert, ...prev])
         setSelectedAlert(newAlert)
         setCurrentView('details')
+      } else {
+        setAnalysisStatus(`${ticker} conviction score (${coordData.conviction_score.toFixed(1)}) below threshold`)
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Analysis failed')
     } finally {
       setAnalyzing(false)
+      setTimeout(() => setAnalysisStatus(''), 3000)
     }
   }
 
   const handleAnalyzeNow = () => {
     if (watchlist.length > 0) {
       analyzeStock(watchlist[0].ticker)
+    }
+  }
+
+  const handleSearchAnalyze = () => {
+    const ticker = searchTicker.trim().toUpperCase()
+    if (ticker) {
+      analyzeStock(ticker)
+      setSearchTicker('')
+    }
+  }
+
+  const handleSearchKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearchAnalyze()
     }
   }
 
@@ -467,6 +490,95 @@ export default function Home() {
             </div>
           </div>
         </header>
+
+        {/* Stock Search Bar */}
+        <div className="container mx-auto px-6 py-6">
+          <Card className="bg-gradient-to-r from-emerald-900/20 to-blue-900/20 border-emerald-500/30">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="flex-1">
+                  <Label htmlFor="stock-search" className="text-white text-lg font-semibold mb-2 block">
+                    Analyze Any Stock - Real-Time Web Research
+                  </Label>
+                  <div className="flex gap-3">
+                    <div className="relative flex-1 max-w-md">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <Input
+                        id="stock-search"
+                        type="text"
+                        placeholder="Enter stock ticker (e.g., TSLA, AAPL, NVDA)..."
+                        value={searchTicker}
+                        onChange={(e) => setSearchTicker(e.target.value.toUpperCase())}
+                        onKeyPress={handleSearchKeyPress}
+                        disabled={analyzing}
+                        className="pl-10 bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 h-12 text-lg"
+                      />
+                    </div>
+                    <Button
+                      onClick={handleSearchAnalyze}
+                      disabled={analyzing || !searchTicker.trim()}
+                      size="lg"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white px-8"
+                    >
+                      {analyzing ? (
+                        <>
+                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                          Analyzing...
+                        </>
+                      ) : (
+                        <>
+                          <Search className="w-5 h-5 mr-2" />
+                          Analyze Stock
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-2">
+                    Our AI agents will search the web for current news, financial data, technical indicators, and industry trends
+                  </p>
+                  {analysisStatus && (
+                    <div className="mt-3 flex items-center gap-2 text-emerald-400">
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span className="text-sm font-medium">{analysisStatus}</span>
+                    </div>
+                  )}
+                </div>
+                {analyzing && (
+                  <div className="ml-4 pl-4 border-l border-gray-700">
+                    <p className="text-xs text-gray-400 font-semibold mb-2">Active Agents:</p>
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 text-xs text-gray-300">
+                        <Activity className="w-3 h-3 text-emerald-400" />
+                        <span>Coordinator</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-gray-300">
+                        <BarChart className="w-3 h-3 text-blue-400" />
+                        <span>Technical Analysis</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-gray-300">
+                        <DollarSign className="w-3 h-3 text-green-400" />
+                        <span>Fundamental Analysis</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-gray-300">
+                        <Newspaper className="w-3 h-3 text-amber-400" />
+                        <span>News & Sentiment (Web Search)</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-gray-300">
+                        <Cpu className="w-3 h-3 text-purple-400" />
+                        <span>Industry Trends (Web Search)</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-gray-300">
+                        <Shield className="w-3 h-3 text-red-400" />
+                        <span>Risk Assessment</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Error Display */}
         {error && (
