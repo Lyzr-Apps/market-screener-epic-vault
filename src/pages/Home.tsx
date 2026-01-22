@@ -289,11 +289,37 @@ export default function Home() {
         STOCK_COORDINATOR_ID
       )
 
-      if (!coordinatorResult.success || coordinatorResult.response.status !== 'success') {
+      if (!coordinatorResult.success) {
         throw new Error(coordinatorResult.error || 'Analysis failed')
       }
 
-      const coordData = coordinatorResult.response.result as CoordinatorResult
+      console.log('Coordinator raw response:', coordinatorResult.response)
+
+      // Handle different response structures
+      let coordData: CoordinatorResult
+
+      if (coordinatorResult.response.status === 'success' && coordinatorResult.response.result) {
+        coordData = coordinatorResult.response.result as CoordinatorResult
+      } else if (typeof coordinatorResult.response === 'object' && 'conviction_score' in coordinatorResult.response) {
+        // Agent might return data directly without status wrapper
+        coordData = coordinatorResult.response as CoordinatorResult
+      } else {
+        console.error('Invalid coordinator response structure:', coordinatorResult.response)
+        throw new Error('Agent returned unexpected data format. Please try again.')
+      }
+
+      // Validate required fields with helpful error messages
+      if (!coordData) {
+        throw new Error('Agent response is empty')
+      }
+      if (typeof coordData.conviction_score !== 'number') {
+        console.error('Missing or invalid conviction_score:', coordData)
+        throw new Error('Agent did not return a conviction score. Response may be malformed.')
+      }
+      if (!coordData.ticker || !coordData.company_name) {
+        console.error('Missing ticker or company_name:', coordData)
+        throw new Error('Agent response is missing stock information')
+      }
 
       // Only fetch detailed analysis if conviction score meets threshold
       if (coordData.conviction_score >= settings.convictionThreshold) {
@@ -324,18 +350,18 @@ export default function Home() {
 
         const newAlert: Alert = {
           id: Date.now().toString(),
-          ticker: coordData.ticker,
-          company_name: coordData.company_name,
+          ticker: coordData.ticker || ticker,
+          company_name: coordData.company_name || ticker,
           conviction_score: coordData.conviction_score,
-          recommendation: coordData.overall_recommendation,
-          summary: coordData.summary,
+          recommendation: coordData.overall_recommendation || 'hold',
+          summary: coordData.summary || 'Analysis completed',
           timestamp: new Date().toISOString(),
           coordinatorData: coordData,
-          technicalData: techResult.success ? techResult.response.result as TechnicalResult : undefined,
-          fundamentalData: fundResult.success ? fundResult.response.result as FundamentalResult : undefined,
-          sentimentData: sentResult.success ? sentResult.response.result as SentimentResult : undefined,
-          industryData: indResult.success ? indResult.response.result as IndustryResult : undefined,
-          riskData: riskResult.success ? riskResult.response.result as RiskResult : undefined,
+          technicalData: techResult.success && techResult.response?.result ? techResult.response.result as TechnicalResult : undefined,
+          fundamentalData: fundResult.success && fundResult.response?.result ? fundResult.response.result as FundamentalResult : undefined,
+          sentimentData: sentResult.success && sentResult.response?.result ? sentResult.response.result as SentimentResult : undefined,
+          industryData: indResult.success && indResult.response?.result ? indResult.response.result as IndustryResult : undefined,
+          riskData: riskResult.success && riskResult.response?.result ? riskResult.response.result as RiskResult : undefined,
         }
 
         setAnalysisStatus('Analysis complete!')
@@ -343,7 +369,8 @@ export default function Home() {
         setSelectedAlert(newAlert)
         setCurrentView('details')
       } else {
-        setAnalysisStatus(`${ticker} conviction score (${coordData.conviction_score.toFixed(1)}) below threshold`)
+        const score = typeof coordData.conviction_score === 'number' ? coordData.conviction_score.toFixed(1) : 'N/A'
+        setAnalysisStatus(`${ticker} conviction score (${score}) below threshold (${settings.convictionThreshold})`)
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Analysis failed')
