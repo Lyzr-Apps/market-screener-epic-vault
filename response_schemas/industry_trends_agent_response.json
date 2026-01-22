@@ -1,0 +1,158 @@
+{
+  "agent_name": "Industry Trends Agent",
+  "agent_id": "69723391d6d0dcaec111be36",
+  "agent_purpose": "analyzer",
+  "description": "Industry and sector analysis including competitive landscape, regulatory environment, and macroeconomic factors",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "industry_score": "number",
+      "sector_performance": {
+        "sector_name": "string",
+        "performance_ytd": "number",
+        "trend": "string",
+        "outlook": "string"
+      },
+      "competitive_landscape": {
+        "market_position": "string",
+        "competitive_advantages": [
+          "string"
+        ],
+        "competitive_threats": [
+          "string"
+        ]
+      },
+      "regulatory_environment": {
+        "regulatory_risk": "string",
+        "recent_changes": [
+          "string"
+        ],
+        "upcoming_regulations": [
+          "string"
+        ]
+      },
+      "macroeconomic_factors": {
+        "interest_rate_sensitivity": "string",
+        "economic_cycle_stage": "string",
+        "key_indicators": [
+          "string"
+        ]
+      },
+      "recommendation": "string",
+      "confidence": "number",
+      "summary": "string"
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "industry_score": 85.0,
+      "sector_performance": {
+        "sector_name": "Semiconductors",
+        "performance_ytd": 25.0,
+        "trend": "growing",
+        "outlook": "bullish"
+      },
+      "competitive_landscape": {
+        "market_position": "leader",
+        "competitive_advantages": [
+          "Strong R&D capabilities",
+          "Diverse product portfolio",
+          "Established customer relationships"
+        ],
+        "competitive_threats": [
+          "Intense competition from emerging players",
+          "Potential for supply chain disruptions",
+          "Rapid technological advancements requiring constant innovation"
+        ]
+      },
+      "regulatory_environment": {
+        "regulatory_risk": "medium",
+        "recent_changes": [
+          "Increased scrutiny on technology exports",
+          "Regulations on semiconductor manufacturing subsidies"
+        ],
+        "upcoming_regulations": [
+          "Potential tariffs on semiconductor imports",
+          "New environmental regulations for manufacturing processes"
+        ]
+      },
+      "macroeconomic_factors": {
+        "interest_rate_sensitivity": "medium",
+        "economic_cycle_stage": "expansion",
+        "key_indicators": [
+          "Global semiconductor demand growth",
+          "Rising consumer electronics sales",
+          "Increased investment in AI and IoT technologies"
+        ]
+      },
+      "recommendation": "buy",
+      "confidence": 0.8,
+      "summary": "The semiconductor industry is experiencing strong growth driven by high demand for computing technologies and innovations in AI and IoT, placing NVDA in a favorable position. Regulatory risks are present but manageable, and the competitive landscape remains dynamic."
+    },
+    "metadata": {
+      "agent_name": "Industry Trends Agent",
+      "timestamp": "2023-10-22T12:00:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-22T14:30:15.641852",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "industry_score": 85.0,
+      "sector_performance": {
+        "sector_name": "Semiconductors",
+        "performance_ytd": 25.0,
+        "trend": "growing",
+        "outlook": "bullish"
+      },
+      "competitive_landscape": {
+        "market_position": "leader",
+        "competitive_advantages": [
+          "Strong R&D capabilities",
+          "Diverse product portfolio",
+          "Established customer relationships"
+        ],
+        "competitive_threats": [
+          "Intense competition from emerging players",
+          "Potential for supply chain disruptions",
+          "Rapid technological advancements requiring constant innovation"
+        ]
+      },
+      "regulatory_environment": {
+        "regulatory_risk": "medium",
+        "recent_changes": [
+          "Increased scrutiny on technology exports",
+          "Regulations on semiconductor manufacturing subsidies"
+        ],
+        "upcoming_regulations": [
+          "Potential tariffs on semiconductor imports",
+          "New environmental regulations for manufacturing processes"
+        ]
+      },
+      "macroeconomic_factors": {
+        "interest_rate_sensitivity": "medium",
+        "economic_cycle_stage": "expansion",
+        "key_indicators": [
+          "Global semiconductor demand growth",
+          "Rising consumer electronics sales",
+          "Increased investment in AI and IoT technologies"
+        ]
+      },
+      "recommendation": "buy",
+      "confidence": 0.8,
+      "summary": "The semiconductor industry is experiencing strong growth driven by high demand for computing technologies and innovations in AI and IoT, placing NVDA in a favorable position. Regulatory risks are present but manageable, and the competitive landscape remains dynamic."
+    },
+    "metadata": {
+      "agent_name": "Industry Trends Agent",
+      "timestamp": "2023-10-22T12:00:00Z"
+    }
+  },
+  "test_passed": true
+}

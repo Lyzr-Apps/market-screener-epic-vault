@@ -1,0 +1,119 @@
+{
+  "agent_name": "Technical Analysis Agent",
+  "agent_id": "697233471d92f5e2dd22e52f",
+  "agent_purpose": "analyzer",
+  "description": "Technical analysis results including indicators, signals, and buy/hold/sell recommendations",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "technical_score": "number",
+      "signals": {
+        "trend": "string",
+        "momentum": "string",
+        "volume_pattern": "string"
+      },
+      "indicators": {
+        "rsi": "number",
+        "macd": "string",
+        "moving_averages": {
+          "ma_50": "number",
+          "ma_200": "number",
+          "golden_cross": "boolean"
+        }
+      },
+      "support_resistance": {
+        "support_levels": [
+          "number"
+        ],
+        "resistance_levels": [
+          "number"
+        ]
+      },
+      "recommendation": "string",
+      "confidence": "number",
+      "summary": "string"
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "technical_score": 82.0,
+      "signals": {
+        "trend": "bullish",
+        "momentum": "strong",
+        "volume_pattern": "Above-average buying volume on recent upswings with moderate consolidation; volume confirms price strength."
+      },
+      "indicators": {
+        "rsi": 69.4,
+        "macd": "MACD line above signal line, indicating positive momentum; histogram widening signals continued strength.",
+        "moving_averages": {
+          "ma_50": 1220.5,
+          "ma_200": 950.8,
+          "golden_cross": true
+        }
+      },
+      "support_resistance": {
+        "support_levels": [
+          1175.0,
+          1115.0
+        ],
+        "resistance_levels": [
+          1265.0,
+          1300.0
+        ]
+      },
+      "recommendation": "buy",
+      "confidence": 0.89,
+      "summary": "NVDA shows a strong bullish trend with the 50-day MA well above the 200-day MA. Current RSI is near overbought territory, which can suggest consolidation ahead but does not negate strong momentum. MACD is positive, and volume trends confirm upward moves. Watch for resistance near 1265-1300 and potential pullbacks, but technicals support continued upside in the short term."
+    },
+    "metadata": {
+      "agent_name": "Technical Analysis Agent",
+      "timestamp": "2024-06-12T14:35:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-22T14:29:50.475385",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "technical_score": 82.0,
+      "signals": {
+        "trend": "bullish",
+        "momentum": "strong",
+        "volume_pattern": "Above-average buying volume on recent upswings with moderate consolidation; volume confirms price strength."
+      },
+      "indicators": {
+        "rsi": 69.4,
+        "macd": "MACD line above signal line, indicating positive momentum; histogram widening signals continued strength.",
+        "moving_averages": {
+          "ma_50": 1220.5,
+          "ma_200": 950.8,
+          "golden_cross": true
+        }
+      },
+      "support_resistance": {
+        "support_levels": [
+          1175.0,
+          1115.0
+        ],
+        "resistance_levels": [
+          1265.0,
+          1300.0
+        ]
+      },
+      "recommendation": "buy",
+      "confidence": 0.89,
+      "summary": "NVDA shows a strong bullish trend with the 50-day MA well above the 200-day MA. Current RSI is near overbought territory, which can suggest consolidation ahead but does not negate strong momentum. MACD is positive, and volume trends confirm upward moves. Watch for resistance near 1265-1300 and potential pullbacks, but technicals support continued upside in the short term."
+    },
+    "metadata": {
+      "agent_name": "Technical Analysis Agent",
+      "timestamp": "2024-06-12T14:35:00Z"
+    }
+  },
+  "test_passed": true
+}

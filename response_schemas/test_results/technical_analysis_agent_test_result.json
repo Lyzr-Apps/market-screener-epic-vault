@@ -1,0 +1,47 @@
+{
+  "agent_name": "Technical Analysis Agent",
+  "agent_id": "697233471d92f5e2dd22e52f",
+  "test_message": "Analyze technical indicators for NVDA stock - price patterns, RSI, MACD, volume trends, and support/resistance levels",
+  "expected_purpose": "technical_analysis",
+  "timestamp": "2026-01-22T14:29:50.473086",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "technical_score": 82.0,
+      "signals": {
+        "trend": "bullish",
+        "momentum": "strong",
+        "volume_pattern": "Above-average buying volume on recent upswings with moderate consolidation; volume confirms price strength."
+      },
+      "indicators": {
+        "rsi": 69.4,
+        "macd": "MACD line above signal line, indicating positive momentum; histogram widening signals continued strength.",
+        "moving_averages": {
+          "ma_50": 1220.5,
+          "ma_200": 950.8,
+          "golden_cross": true
+        }
+      },
+      "support_resistance": {
+        "support_levels": [
+          1175.0,
+          1115.0
+        ],
+        "resistance_levels": [
+          1265.0,
+          1300.0
+        ]
+      },
+      "recommendation": "buy",
+      "confidence": 0.89,
+      "summary": "NVDA shows a strong bullish trend with the 50-day MA well above the 200-day MA. Current RSI is near overbought territory, which can suggest consolidation ahead but does not negate strong momentum. MACD is positive, and volume trends confirm upward moves. Watch for resistance near 1265-1300 and potential pullbacks, but technicals support continued upside in the short term."
+    },
+    "metadata": {
+      "agent_name": "Technical Analysis Agent",
+      "timestamp": "2024-06-12T14:35:00Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"technical_score\": 82.0,\n    \"signals\": {\n      \"trend\": \"bullish\",\n      \"momentum\": \"strong\",\n      \"volume_pattern\": \"Above-average buying volume on recent upswings with moderate consolidation; volume confirms price strength.\"\n    },\n    \"indicators\": {\n      \"rsi\": 69.4,\n      \"macd\": \"MACD line above signal line, indicating positive momentum; histogram widening signals continued strength.\",\n      \"moving_averages\": {\n        \"ma_50\": 1220.5,\n        \"ma_200\": 950.8,\n        \"golden_cross\": true\n      }\n    },\n    \"support_resistance\": {\n      \"support_levels\": [1175.0, 1115.0],\n      \"resistance_levels\": [1265.0, 1300.0]\n    },\n    \"recommendation\": \"buy\",\n    \"confidence\": 0.89,\n    \"summary\": \"NVDA shows a strong bullish trend with the 50-day MA well above the 200-day MA. Current RSI is near overbought territory, which can suggest consolidation ahead but does not negate strong momentum. MACD is positive, and volume trends confirm upward moves. Watch for resistance near 1265-1300 and potential pullbacks, but technicals support continued upside in the short term.\"\n  },\n  \"metadata\": {\n    \"agent_name\": \"Technical Analysis Agent\",\n    \"timestamp\": \"2024-06-12T14:35:00Z\"\n  }\n}"
+}

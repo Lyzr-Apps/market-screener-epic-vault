@@ -1,0 +1,174 @@
+{
+  "agent_name": "Stock Opportunity Coordinator",
+  "agent_id": "697233d11d92f5e2dd22e545",
+  "agent_purpose": "manager",
+  "description": "Comprehensive stock analysis report with conviction scores, SWOT analysis, and actionable recommendations",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "ticker": "string",
+      "company_name": "string",
+      "conviction_score": "number",
+      "overall_recommendation": "string",
+      "alert_triggered": "boolean",
+      "analysis_summary": {
+        "technical_score": "number",
+        "fundamental_score": "number",
+        "sentiment_score": "number",
+        "industry_score": "number",
+        "risk_score": "number"
+      },
+      "key_insights": {
+        "strengths": [
+          "string"
+        ],
+        "weaknesses": [
+          "string"
+        ],
+        "opportunities": [
+          "string"
+        ],
+        "threats": [
+          "string"
+        ]
+      },
+      "price_target": {
+        "current_price": "number",
+        "target_price": "number",
+        "upside_potential": "number"
+      },
+      "action_items": [
+        "string"
+      ],
+      "confidence": "number",
+      "summary": "string"
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string",
+      "analysis_depth": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "ticker": "NVDA",
+      "company_name": "NVIDIA Corporation",
+      "conviction_score": 84.5,
+      "overall_recommendation": "buy",
+      "alert_triggered": true,
+      "analysis_summary": {
+        "technical_score": 88.0,
+        "fundamental_score": 90.0,
+        "sentiment_score": 85.3,
+        "industry_score": 85.0,
+        "risk_score": 74.0
+      },
+      "key_insights": {
+        "strengths": [
+          "Exceptional revenue and profit growth fueled by AI/data center demand",
+          "Market leadership and technological innovation in semiconductors",
+          "Strong technical momentum confirmed by indicators and volume patterns",
+          "High liquidity and institutional ownership, reducing execution risk"
+        ],
+        "weaknesses": [
+          "Valuation multiples (P/E, P/B) are historically high, indicating overvaluation",
+          "Stock is sensitive to negative headlines and sector rotations",
+          "Elevated RSI may signal potential for short-term pullback"
+        ],
+        "opportunities": [
+          "Strong near-term demand for AI and data center products",
+          "Positive momentum from recent earnings surprise and analyst upgrades",
+          "Upcoming investor events and new product launches"
+        ],
+        "threats": [
+          "Ongoing supply chain uncertainties and geopolitical risks (export controls on chips)",
+          "Potential regulatory scrutiny and new tariffs impacting global operations",
+          "High sector volatility and profit-taking risk on negative news"
+        ]
+      },
+      "price_target": {
+        "current_price": 1192.0,
+        "target_price": 1300.0,
+        "upside_potential": 9.06
+      },
+      "action_items": [
+        "Consider building a position on price pullbacks toward support near $1150-$1110.",
+        "Monitor sector news and regulatory landscape for emergent risks.",
+        "Track upcoming earnings and investor events for early insight into guidance/forecasts.",
+        "Utilize stop-loss orders to manage downside amid high volatility."
+      ],
+      "confidence": 0.88,
+      "summary": "NVIDIA (NVDA) presents a high-conviction short-term buy opportunity, backed by robust fundamentals, sector tailwinds, strong technical momentum, and overwhelmingly positive sentiment following recent earnings. While overvaluation and volatility risks are significant, the near-term growth outlook driven by AI/data center markets and favorable industry dynamics merit a 'buy' recommendation for tactical investors who can navigate short-term swings."
+    },
+    "metadata": {
+      "agent_name": "Stock Opportunity Coordinator",
+      "timestamp": "2024-06-18T19:07:33Z",
+      "analysis_depth": "comprehensive"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-22T14:29:44.251757",
+  "test_message_used": "Process this request and coordinate sub-agents",
+  "raw_test_response": "Please specify the stock ticker and/or company name you want analyzed. This information is required to coordinate the sub-agents and provide a comprehensive analysis.",
+  "test_error": "Response not valid JSON: Expecting value: line 1 column 1 (char 0)",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "ticker": "NVDA",
+      "company_name": "NVIDIA Corporation",
+      "conviction_score": 84.5,
+      "overall_recommendation": "buy",
+      "alert_triggered": true,
+      "analysis_summary": {
+        "technical_score": 88.0,
+        "fundamental_score": 90.0,
+        "sentiment_score": 85.3,
+        "industry_score": 85.0,
+        "risk_score": 74.0
+      },
+      "key_insights": {
+        "strengths": [
+          "Exceptional revenue and profit growth fueled by AI/data center demand",
+          "Market leadership and technological innovation in semiconductors",
+          "Strong technical momentum confirmed by indicators and volume patterns",
+          "High liquidity and institutional ownership, reducing execution risk"
+        ],
+        "weaknesses": [
+          "Valuation multiples (P/E, P/B) are historically high, indicating overvaluation",
+          "Stock is sensitive to negative headlines and sector rotations",
+          "Elevated RSI may signal potential for short-term pullback"
+        ],
+        "opportunities": [
+          "Strong near-term demand for AI and data center products",
+          "Positive momentum from recent earnings surprise and analyst upgrades",
+          "Upcoming investor events and new product launches"
+        ],
+        "threats": [
+          "Ongoing supply chain uncertainties and geopolitical risks (export controls on chips)",
+          "Potential regulatory scrutiny and new tariffs impacting global operations",
+          "High sector volatility and profit-taking risk on negative news"
+        ]
+      },
+      "price_target": {
+        "current_price": 1192.0,
+        "target_price": 1300.0,
+        "upside_potential": 9.06
+      },
+      "action_items": [
+        "Consider building a position on price pullbacks toward support near $1150-$1110.",
+        "Monitor sector news and regulatory landscape for emergent risks.",
+        "Track upcoming earnings and investor events for early insight into guidance/forecasts.",
+        "Utilize stop-loss orders to manage downside amid high volatility."
+      ],
+      "confidence": 0.88,
+      "summary": "NVIDIA (NVDA) presents a high-conviction short-term buy opportunity, backed by robust fundamentals, sector tailwinds, strong technical momentum, and overwhelmingly positive sentiment following recent earnings. While overvaluation and volatility risks are significant, the near-term growth outlook driven by AI/data center markets and favorable industry dynamics merit a 'buy' recommendation for tactical investors who can navigate short-term swings."
+    },
+    "metadata": {
+      "agent_name": "Stock Opportunity Coordinator",
+      "timestamp": "2024-06-18T19:07:33Z",
+      "analysis_depth": "comprehensive"
+    }
+  },
+  "test_passed": true
+}

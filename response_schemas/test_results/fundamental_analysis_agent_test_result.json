@@ -1,0 +1,41 @@
+{
+  "agent_name": "Fundamental Analysis Agent",
+  "agent_id": "6972335fd6d0dcaec111be25",
+  "test_message": "Evaluate fundamental metrics for NVDA - P/E ratio, revenue growth, debt levels, earnings data",
+  "expected_purpose": "fundamental_analysis",
+  "timestamp": "2026-01-22T14:29:54.868156",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "fundamental_score": 89.0,
+      "valuation": {
+        "pe_ratio": 70.2,
+        "peg_ratio": 1.4,
+        "price_to_book": 34.2,
+        "valuation_assessment": "overvalued"
+      },
+      "financial_health": {
+        "revenue_growth_yoy": 2.56,
+        "profit_margin": 0.52,
+        "debt_to_equity": 0.22,
+        "current_ratio": 3.7,
+        "health_rating": "strong"
+      },
+      "earnings": {
+        "eps_growth": 4.31,
+        "earnings_surprise": 0.07,
+        "next_earnings_date": "2024-08-21"
+      },
+      "recommendation": "hold",
+      "confidence": 0.82,
+      "summary": "Nvidia exhibits exceptional revenue and earnings growth, strong profitability, and healthy balance sheet metrics with low debt and high liquidity. However, current valuation multiples such as P/E and price-to-book are markedly high, reflecting significant optimism and potential overvaluation. A hold rating is appropriate as the fundamentals are robust, but valuation risk is elevated."
+    },
+    "metadata": {
+      "agent_name": "Fundamental Analysis Agent",
+      "timestamp": "2024-06-12T18:14:01Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"fundamental_score\": 89.0,\n    \"valuation\": {\n      \"pe_ratio\": 70.2,\n      \"peg_ratio\": 1.4,\n      \"price_to_book\": 34.2,\n      \"valuation_assessment\": \"overvalued\"\n    },\n    \"financial_health\": {\n      \"revenue_growth_yoy\": 2.56,\n      \"profit_margin\": 0.52,\n      \"debt_to_equity\": 0.22,\n      \"current_ratio\": 3.7,\n      \"health_rating\": \"strong\"\n    },\n    \"earnings\": {\n      \"eps_growth\": 4.31,\n      \"earnings_surprise\": 0.07,\n      \"next_earnings_date\": \"2024-08-21\"\n    },\n    \"recommendation\": \"hold\",\n    \"confidence\": 0.82,\n    \"summary\": \"Nvidia exhibits exceptional revenue and earnings growth, strong profitability, and healthy balance sheet metrics with low debt and high liquidity. However, current valuation multiples such as P/E and price-to-book are markedly high, reflecting significant optimism and potential overvaluation. A hold rating is appropriate as the fundamentals are robust, but valuation risk is elevated.\"\n  },\n  \"metadata\": {\n    \"agent_name\": \"Fundamental Analysis Agent\",\n    \"timestamp\": \"2024-06-12T18:14:01Z\"\n  }\n}"
+}

@@ -1,0 +1,146 @@
+{
+  "agent_name": "Risk Assessment Agent",
+  "agent_id": "697233add6d0dcaec111be3a",
+  "agent_purpose": "analyzer",
+  "description": "Risk assessment including volatility, liquidity, concentration risks, and negative catalysts",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "risk_score": "number",
+      "overall_risk": "string",
+      "volatility_analysis": {
+        "beta": "number",
+        "volatility_30d": "number",
+        "max_drawdown": "number",
+        "volatility_rating": "string"
+      },
+      "liquidity_analysis": {
+        "avg_daily_volume": "number",
+        "bid_ask_spread": "number",
+        "liquidity_rating": "string"
+      },
+      "concentration_risks": {
+        "insider_ownership": "number",
+        "institutional_ownership": "number",
+        "top_holder_concentration": "number",
+        "concentration_concern": "string"
+      },
+      "negative_catalysts": {
+        "identified_risks": [
+          "string"
+        ],
+        "upcoming_risk_events": [
+          "string"
+        ],
+        "systemic_risks": [
+          "string"
+        ]
+      },
+      "recommendation": "string",
+      "confidence": "number",
+      "summary": "string"
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "risk_score": 78.0,
+      "overall_risk": "high",
+      "volatility_analysis": {
+        "beta": 1.7,
+        "volatility_30d": 0.045,
+        "max_drawdown": 0.14,
+        "volatility_rating": "high"
+      },
+      "liquidity_analysis": {
+        "avg_daily_volume": 46000000,
+        "bid_ask_spread": 0.001,
+        "liquidity_rating": "high"
+      },
+      "concentration_risks": {
+        "insider_ownership": 0.03,
+        "institutional_ownership": 0.69,
+        "top_holder_concentration": 0.18,
+        "concentration_concern": "medium"
+      },
+      "negative_catalysts": {
+        "identified_risks": [
+          "High valuation may amplify downside in market pullbacks",
+          "Aggressive competition in AI and semiconductor sectors",
+          "Exposure to cyclical demand (datacenter, gaming)"
+        ],
+        "upcoming_risk_events": [
+          "Q2 earnings report (potential for high volatility)",
+          "Macroeconomic data releases (inflation, rate hikes)",
+          "Possible new US-China export restrictions"
+        ],
+        "systemic_risks": [
+          "Broader tech selloffs impacting growth stocks",
+          "Interest rate hikes diminishing sector momentum"
+        ]
+      },
+      "recommendation": "hold",
+      "confidence": 0.72,
+      "summary": "NVDA presents a high short-term risk profile due to elevated volatility, recent sharp drawdowns, and sector-wide sensitivity to both earnings results and macroeconomic shifts. Liquidity is robust, mitigating concerns about trade execution. However, concentration among institutional holders and exposure to competitive, rapidly-evolving markets add to potential downside catalysts."
+    },
+    "metadata": {
+      "agent_name": "Risk Assessment Agent",
+      "timestamp": "2024-06-16T12:00:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-22T14:30:23.887160",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "risk_score": 78.0,
+      "overall_risk": "high",
+      "volatility_analysis": {
+        "beta": 1.7,
+        "volatility_30d": 0.045,
+        "max_drawdown": 0.14,
+        "volatility_rating": "high"
+      },
+      "liquidity_analysis": {
+        "avg_daily_volume": 46000000,
+        "bid_ask_spread": 0.001,
+        "liquidity_rating": "high"
+      },
+      "concentration_risks": {
+        "insider_ownership": 0.03,
+        "institutional_ownership": 0.69,
+        "top_holder_concentration": 0.18,
+        "concentration_concern": "medium"
+      },
+      "negative_catalysts": {
+        "identified_risks": [
+          "High valuation may amplify downside in market pullbacks",
+          "Aggressive competition in AI and semiconductor sectors",
+          "Exposure to cyclical demand (datacenter, gaming)"
+        ],
+        "upcoming_risk_events": [
+          "Q2 earnings report (potential for high volatility)",
+          "Macroeconomic data releases (inflation, rate hikes)",
+          "Possible new US-China export restrictions"
+        ],
+        "systemic_risks": [
+          "Broader tech selloffs impacting growth stocks",
+          "Interest rate hikes diminishing sector momentum"
+        ]
+      },
+      "recommendation": "hold",
+      "confidence": 0.72,
+      "summary": "NVDA presents a high short-term risk profile due to elevated volatility, recent sharp drawdowns, and sector-wide sensitivity to both earnings results and macroeconomic shifts. Liquidity is robust, mitigating concerns about trade execution. However, concentration among institutional holders and exposure to competitive, rapidly-evolving markets add to potential downside catalysts."
+    },
+    "metadata": {
+      "agent_name": "Risk Assessment Agent",
+      "timestamp": "2024-06-16T12:00:00Z"
+    }
+  },
+  "test_passed": true
+}

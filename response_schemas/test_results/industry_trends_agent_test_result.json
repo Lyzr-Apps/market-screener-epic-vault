@@ -1,0 +1,62 @@
+{
+  "agent_name": "Industry Trends Agent",
+  "agent_id": "69723391d6d0dcaec111be36",
+  "test_message": "Research semiconductor industry trends affecting NVDA - sector performance, competitive dynamics, regulatory changes",
+  "expected_purpose": "industry_analysis",
+  "timestamp": "2026-01-22T14:30:15.640649",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "industry_score": 85.0,
+      "sector_performance": {
+        "sector_name": "Semiconductors",
+        "performance_ytd": 25.0,
+        "trend": "growing",
+        "outlook": "bullish"
+      },
+      "competitive_landscape": {
+        "market_position": "leader",
+        "competitive_advantages": [
+          "Strong R&D capabilities",
+          "Diverse product portfolio",
+          "Established customer relationships"
+        ],
+        "competitive_threats": [
+          "Intense competition from emerging players",
+          "Potential for supply chain disruptions",
+          "Rapid technological advancements requiring constant innovation"
+        ]
+      },
+      "regulatory_environment": {
+        "regulatory_risk": "medium",
+        "recent_changes": [
+          "Increased scrutiny on technology exports",
+          "Regulations on semiconductor manufacturing subsidies"
+        ],
+        "upcoming_regulations": [
+          "Potential tariffs on semiconductor imports",
+          "New environmental regulations for manufacturing processes"
+        ]
+      },
+      "macroeconomic_factors": {
+        "interest_rate_sensitivity": "medium",
+        "economic_cycle_stage": "expansion",
+        "key_indicators": [
+          "Global semiconductor demand growth",
+          "Rising consumer electronics sales",
+          "Increased investment in AI and IoT technologies"
+        ]
+      },
+      "recommendation": "buy",
+      "confidence": 0.8,
+      "summary": "The semiconductor industry is experiencing strong growth driven by high demand for computing technologies and innovations in AI and IoT, placing NVDA in a favorable position. Regulatory risks are present but manageable, and the competitive landscape remains dynamic."
+    },
+    "metadata": {
+      "agent_name": "Industry Trends Agent",
+      "timestamp": "2023-10-22T12:00:00Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"industry_score\": 85.0,\n    \"sector_performance\": {\n      \"sector_name\": \"Semiconductors\",\n      \"performance_ytd\": 25.0,\n      \"trend\": \"growing\",\n      \"outlook\": \"bullish\"\n    },\n    \"competitive_landscape\": {\n      \"market_position\": \"leader\",\n      \"competitive_advantages\": [\n        \"Strong R&D capabilities\",\n        \"Diverse product portfolio\",\n        \"Established customer relationships\"\n      ],\n      \"competitive_threats\": [\n        \"Intense competition from emerging players\",\n        \"Potential for supply chain disruptions\",\n        \"Rapid technological advancements requiring constant innovation\"\n      ]\n    },\n    \"regulatory_environment\": {\n      \"regulatory_risk\": \"medium\",\n      \"recent_changes\": [\n        \"Increased scrutiny on technology exports\",\n        \"Regulations on semiconductor manufacturing subsidies\"\n      ],\n      \"upcoming_regulations\": [\n        \"Potential tariffs on semiconductor imports\",\n        \"New environmental regulations for manufacturing processes\"\n      ]\n    },\n    \"macroeconomic_factors\": {\n      \"interest_rate_sensitivity\": \"medium\",\n      \"economic_cycle_stage\": \"expansion\",\n      \"key_indicators\": [\n        \"Global semiconductor demand growth\",\n        \"Rising consumer electronics sales\",\n        \"Increased investment in AI and IoT technologies\"\n      ]\n    },\n    \"recommendation\": \"buy\",\n    \"confidence\": 0.8,\n    \"summary\": \"The semiconductor industry is experiencing strong growth driven by high demand for computing technologies and innovations in AI and IoT, placing NVDA in a favorable position. Regulatory risks are present but manageable, and the competitive landscape remains dynamic.\"\n  },\n  \"metadata\": {\n    \"agent_name\": \"Industry Trends Agent\",\n    \"timestamp\": \"2023-10-22T12:00:00Z\"\n  }\n}"
+}

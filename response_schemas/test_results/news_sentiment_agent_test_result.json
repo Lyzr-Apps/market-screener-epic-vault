@@ -1,0 +1,65 @@
+{
+  "agent_name": "News Sentiment Agent",
+  "agent_id": "69723379d6d0dcaec111be2f",
+  "test_message": "Search for recent news and sentiment about NVDA stock - news articles, press releases, social sentiment",
+  "expected_purpose": "sentiment_analysis",
+  "timestamp": "2026-01-22T14:30:07.008872",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "sentiment_score": 76.5,
+      "overall_sentiment": "positive",
+      "news_articles": [
+        {
+          "headline": "NVIDIA's Growth Prospects Shine Ahead of Upcoming Earnings",
+          "source": "MarketWatch",
+          "date": "2023-10-10",
+          "sentiment": "positive",
+          "relevance": 0.9
+        },
+        {
+          "headline": "Analysts Bullish on NVIDIA Despite Market Volatility",
+          "source": "CNBC",
+          "date": "2023-10-09",
+          "sentiment": "positive",
+          "relevance": 0.85
+        },
+        {
+          "headline": "NVIDIA Faces Regulatory Scrutiny for AI Chip Sales",
+          "source": "Reuters",
+          "date": "2023-10-08",
+          "sentiment": "negative",
+          "relevance": 0.7
+        }
+      ],
+      "catalysts": {
+        "positive_catalysts": [
+          "Strong earnings forecast and growth in AI market",
+          "Increased demand for gaming and data center products"
+        ],
+        "negative_catalysts": [
+          "Potential regulations affecting chip sales",
+          "Market competition increasing in the AI sector"
+        ],
+        "upcoming_events": [
+          "Earnings report scheduled for October 15, 2023",
+          "Investor day announcements"
+        ]
+      },
+      "social_sentiment": {
+        "buzz_level": "high",
+        "sentiment_trend": "improving"
+      },
+      "recommendation": "buy",
+      "confidence": 0.85,
+      "summary": "NVIDIA's recent news highlights strong growth prospects with an overall positive sentiment despite some regulatory scrutiny. Investors remain optimistic as the company's earnings report approaches."
+    },
+    "metadata": {
+      "agent_name": "News Sentiment Agent",
+      "timestamp": "2023-10-10T12:00:00Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"sentiment_score\": 76.5,\n    \"overall_sentiment\": \"positive\",\n    \"news_articles\": [\n      {\n        \"headline\": \"NVIDIA's Growth Prospects Shine Ahead of Upcoming Earnings\",\n        \"source\": \"MarketWatch\",\n        \"date\": \"2023-10-10\",\n        \"sentiment\": \"positive\",\n        \"relevance\": 0.9\n      },\n      {\n        \"headline\": \"Analysts Bullish on NVIDIA Despite Market Volatility\",\n        \"source\": \"CNBC\",\n        \"date\": \"2023-10-09\",\n        \"sentiment\": \"positive\",\n        \"relevance\": 0.85\n      },\n      {\n        \"headline\": \"NVIDIA Faces Regulatory Scrutiny for AI Chip Sales\",\n        \"source\": \"Reuters\",\n        \"date\": \"2023-10-08\",\n        \"sentiment\": \"negative\",\n        \"relevance\": 0.7\n      }\n    ],\n    \"catalysts\": {\n      \"positive_catalysts\": [\n        \"Strong earnings forecast and growth in AI market\",\n        \"Increased demand for gaming and data center products\"\n      ],\n      \"negative_catalysts\": [\n        \"Potential regulations affecting chip sales\",\n        \"Market competition increasing in the AI sector\"\n      ],\n      \"upcoming_events\": [\n        \"Earnings report scheduled for October 15, 2023\",\n        \"Investor day announcements\"\n      ]\n    },\n    \"social_sentiment\": {\n      \"buzz_level\": \"high\",\n      \"sentiment_trend\": \"improving\"\n    },\n    \"recommendation\": \"buy\",\n    \"confidence\": 0.85,\n    \"summary\": \"NVIDIA's recent news highlights strong growth prospects with an overall positive sentiment despite some regulatory scrutiny. Investors remain optimistic as the company's earnings report approaches.\"\n  },\n  \"metadata\": {\n    \"agent_name\": \"News Sentiment Agent\",\n    \"timestamp\": \"2023-10-10T12:00:00Z\"\n  }\n}"
+}

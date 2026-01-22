@@ -1,0 +1,158 @@
+{
+  "agent_name": "News Sentiment Agent",
+  "agent_id": "69723379d6d0dcaec111be2f",
+  "agent_purpose": "analyzer",
+  "description": "News sentiment analysis including articles, catalysts, and social media trends",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "sentiment_score": "number",
+      "overall_sentiment": "string",
+      "news_articles": [
+        {
+          "headline": "string",
+          "source": "string",
+          "date": "string",
+          "sentiment": "string",
+          "relevance": "number"
+        }
+      ],
+      "catalysts": {
+        "positive_catalysts": [
+          "string"
+        ],
+        "negative_catalysts": [
+          "string"
+        ],
+        "upcoming_events": [
+          "string"
+        ]
+      },
+      "social_sentiment": {
+        "buzz_level": "string",
+        "sentiment_trend": "string"
+      },
+      "recommendation": "string",
+      "confidence": "number",
+      "summary": "string"
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "sentiment_score": 76.5,
+      "overall_sentiment": "positive",
+      "news_articles": [
+        {
+          "headline": "NVIDIA's Growth Prospects Shine Ahead of Upcoming Earnings",
+          "source": "MarketWatch",
+          "date": "2023-10-10",
+          "sentiment": "positive",
+          "relevance": 0.9
+        },
+        {
+          "headline": "Analysts Bullish on NVIDIA Despite Market Volatility",
+          "source": "CNBC",
+          "date": "2023-10-09",
+          "sentiment": "positive",
+          "relevance": 0.85
+        },
+        {
+          "headline": "NVIDIA Faces Regulatory Scrutiny for AI Chip Sales",
+          "source": "Reuters",
+          "date": "2023-10-08",
+          "sentiment": "negative",
+          "relevance": 0.7
+        }
+      ],
+      "catalysts": {
+        "positive_catalysts": [
+          "Strong earnings forecast and growth in AI market",
+          "Increased demand for gaming and data center products"
+        ],
+        "negative_catalysts": [
+          "Potential regulations affecting chip sales",
+          "Market competition increasing in the AI sector"
+        ],
+        "upcoming_events": [
+          "Earnings report scheduled for October 15, 2023",
+          "Investor day announcements"
+        ]
+      },
+      "social_sentiment": {
+        "buzz_level": "high",
+        "sentiment_trend": "improving"
+      },
+      "recommendation": "buy",
+      "confidence": 0.85,
+      "summary": "NVIDIA's recent news highlights strong growth prospects with an overall positive sentiment despite some regulatory scrutiny. Investors remain optimistic as the company's earnings report approaches."
+    },
+    "metadata": {
+      "agent_name": "News Sentiment Agent",
+      "timestamp": "2023-10-10T12:00:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-22T14:30:07.009969",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "sentiment_score": 76.5,
+      "overall_sentiment": "positive",
+      "news_articles": [
+        {
+          "headline": "NVIDIA's Growth Prospects Shine Ahead of Upcoming Earnings",
+          "source": "MarketWatch",
+          "date": "2023-10-10",
+          "sentiment": "positive",
+          "relevance": 0.9
+        },
+        {
+          "headline": "Analysts Bullish on NVIDIA Despite Market Volatility",
+          "source": "CNBC",
+          "date": "2023-10-09",
+          "sentiment": "positive",
+          "relevance": 0.85
+        },
+        {
+          "headline": "NVIDIA Faces Regulatory Scrutiny for AI Chip Sales",
+          "source": "Reuters",
+          "date": "2023-10-08",
+          "sentiment": "negative",
+          "relevance": 0.7
+        }
+      ],
+      "catalysts": {
+        "positive_catalysts": [
+          "Strong earnings forecast and growth in AI market",
+          "Increased demand for gaming and data center products"
+        ],
+        "negative_catalysts": [
+          "Potential regulations affecting chip sales",
+          "Market competition increasing in the AI sector"
+        ],
+        "upcoming_events": [
+          "Earnings report scheduled for October 15, 2023",
+          "Investor day announcements"
+        ]
+      },
+      "social_sentiment": {
+        "buzz_level": "high",
+        "sentiment_trend": "improving"
+      },
+      "recommendation": "buy",
+      "confidence": 0.85,
+      "summary": "NVIDIA's recent news highlights strong growth prospects with an overall positive sentiment despite some regulatory scrutiny. Investors remain optimistic as the company's earnings report approaches."
+    },
+    "metadata": {
+      "agent_name": "News Sentiment Agent",
+      "timestamp": "2023-10-10T12:00:00Z"
+    }
+  },
+  "test_passed": true
+}

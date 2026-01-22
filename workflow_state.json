@@ -1,0 +1,169 @@
+{
+  "workflow_name": "Market Research & Stock Recommendation Platform",
+  "created_at": "2026-01-22T00:00:00Z",
+  "agents": [
+    {
+      "agent_id": "697233471d92f5e2dd22e52f",
+      "name": "Technical Analysis Agent",
+      "type": "sub-agent",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "status": "active"
+    },
+    {
+      "agent_id": "6972335fd6d0dcaec111be25",
+      "name": "Fundamental Analysis Agent",
+      "type": "sub-agent",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "status": "active"
+    },
+    {
+      "agent_id": "69723379d6d0dcaec111be2f",
+      "name": "News Sentiment Agent",
+      "type": "sub-agent",
+      "provider": "Perplexity",
+      "model": "sonar-pro",
+      "status": "active"
+    },
+    {
+      "agent_id": "69723391d6d0dcaec111be36",
+      "name": "Industry Trends Agent",
+      "type": "sub-agent",
+      "provider": "Perplexity",
+      "model": "sonar-pro",
+      "status": "active"
+    },
+    {
+      "agent_id": "697233add6d0dcaec111be3a",
+      "name": "Risk Assessment Agent",
+      "type": "sub-agent",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "status": "active"
+    },
+    {
+      "agent_id": "697233d11d92f5e2dd22e545",
+      "name": "Stock Opportunity Coordinator",
+      "type": "manager",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "status": "active",
+      "managed_agents": [
+        "697233471d92f5e2dd22e52f",
+        "6972335fd6d0dcaec111be25",
+        "69723379d6d0dcaec111be2f",
+        "69723391d6d0dcaec111be36",
+        "697233add6d0dcaec111be3a"
+      ]
+    }
+  ],
+  "workflow": {
+    "nodes": [
+      {
+        "id": "stock_input",
+        "type": "Input",
+        "label": "Stock Ticker Input",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "stock_coordinator",
+        "type": "Agent",
+        "label": "Stock Opportunity Coordinator",
+        "nodeCategory": "agent",
+        "agent_id": "697233d11d92f5e2dd22e545"
+      },
+      {
+        "id": "technical_agent",
+        "type": "Agent",
+        "label": "Technical Analysis Agent",
+        "nodeCategory": "agent",
+        "agent_id": "697233471d92f5e2dd22e52f"
+      },
+      {
+        "id": "fundamental_agent",
+        "type": "Agent",
+        "label": "Fundamental Analysis Agent",
+        "nodeCategory": "agent",
+        "agent_id": "6972335fd6d0dcaec111be25"
+      },
+      {
+        "id": "news_sentiment_agent",
+        "type": "Agent",
+        "label": "News Sentiment Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69723379d6d0dcaec111be2f"
+      },
+      {
+        "id": "industry_trends_agent",
+        "type": "Agent",
+        "label": "Industry Trends Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69723391d6d0dcaec111be36"
+      },
+      {
+        "id": "risk_assessment_agent",
+        "type": "Agent",
+        "label": "Risk Assessment Agent",
+        "nodeCategory": "agent",
+        "agent_id": "697233add6d0dcaec111be3a"
+      },
+      {
+        "id": "analysis_output",
+        "type": "Output",
+        "label": "Stock Analysis Report",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      {
+        "source": "stock_input",
+        "target": "stock_coordinator"
+      },
+      {
+        "source": "stock_coordinator",
+        "target": "technical_agent"
+      },
+      {
+        "source": "stock_coordinator",
+        "target": "fundamental_agent"
+      },
+      {
+        "source": "stock_coordinator",
+        "target": "news_sentiment_agent"
+      },
+      {
+        "source": "stock_coordinator",
+        "target": "industry_trends_agent"
+      },
+      {
+        "source": "stock_coordinator",
+        "target": "risk_assessment_agent"
+      },
+      {
+        "source": "technical_agent",
+        "target": "stock_coordinator"
+      },
+      {
+        "source": "fundamental_agent",
+        "target": "stock_coordinator"
+      },
+      {
+        "source": "news_sentiment_agent",
+        "target": "stock_coordinator"
+      },
+      {
+        "source": "industry_trends_agent",
+        "target": "stock_coordinator"
+      },
+      {
+        "source": "risk_assessment_agent",
+        "target": "stock_coordinator"
+      },
+      {
+        "source": "stock_coordinator",
+        "target": "analysis_output"
+      }
+    ]
+  }
+}
